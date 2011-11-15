@@ -8,7 +8,7 @@ namespace Junior.ApplicationServices
 	public interface IAbsoluteUrlBuilderConfiguration
 	{
 		/// <summary>
-		/// A root URL.
+		/// Gets a root URL.
 		/// </summary>
 		Uri RootUrl
 		{

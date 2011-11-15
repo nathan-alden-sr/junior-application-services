@@ -8,35 +8,35 @@ namespace Junior.ApplicationServices
 	public interface IReCaptchaValidatorConfiguration
 	{
 		/// <summary>
-		/// The URL for which reCAPTCHA is configured.
+		/// Gets the URL for which reCAPTCHA is configured.
 		/// </summary>
 		Uri Url
 		{
 			get;
 		}
 		/// <summary>
-		/// The reCAPTCHA public key.
+		/// Gets the reCAPTCHA public key.
 		/// </summary>
 		string PublicKey
 		{
 			get;
 		}
 		/// <summary>
-		/// The reCAPTCHA private key.
+		/// Gets the reCAPTCHA private key.
 		/// </summary>
 		string PrivateKey
 		{
 			get;
 		}
 		/// <summary>
-		/// The value of the User-Agent header when validating responses.
+		/// Gets the value of the User-Agent header when validating responses.
 		/// </summary>
 		string UserAgent
 		{
 			get;
 		}
 		/// <summary>
-		/// The amount of time before a validation request times out.
+		/// Gets the amount of time before a validation request times out.
 		/// </summary>
 		TimeSpan Timeout
 		{
