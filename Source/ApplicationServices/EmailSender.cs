@@ -44,15 +44,15 @@ namespace Junior.ApplicationServices
 			}
 
 			var client = new SmtpClient(_configuration.SmtpHost, _configuration.SmtpPort)
-			             	{
-			             		Timeout = _configuration.Timeout.Milliseconds,
-			             		EnableSsl = _configuration.UseSsl,
-			             		Credentials = _configuration.Credentials
-			             	};
+				{
+					Timeout = _configuration.Timeout.Milliseconds,
+					EnableSsl = _configuration.UseSsl,
+					Credentials = _configuration.Credentials
+				};
 			var message = new MailMessage
-			              	{
-			              		From = new MailAddress(_configuration.FromAddress, _configuration.FromAddressDisplayName)
-			              	};
+				{
+					From = new MailAddress(_configuration.FromAddress, _configuration.FromAddressDisplayName)
+				};
 
 			foreach (MailAddress toMailAddress in toAddresses.Select(address => new MailAddress(address.ToString())))
 			{
