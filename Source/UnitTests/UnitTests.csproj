@@ -45,9 +45,6 @@
     <AssemblyOriginatorKeyFile>..\JuniorApplicationServices.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\CommonAssemblyInfo.cs">
-      <Link>Properties\CommonAssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="ApplicationServices\AbsoluteUrlBuilderTester.cs" />
     <Compile Include="ApplicationServices\NewLineReplacerTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
