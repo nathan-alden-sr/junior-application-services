@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Junior.ApplicationServices</RootNamespace>
     <AssemblyName>Junior.ApplicationServices</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
     </SccProjectName>
@@ -20,7 +20,10 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,8 +33,11 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Junior.ApplicationServices.xml</DocumentationFile>
-    <WarningsAsErrors>1591</WarningsAsErrors>
+    <DocumentationFile>
+    </DocumentationFile>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,8 +46,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Junior.ApplicationServices.xml</DocumentationFile>
-    <WarningsAsErrors>1591</WarningsAsErrors>
+    <DocumentationFile>
+    </DocumentationFile>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -53,7 +62,6 @@
     <Compile Include="EmailBodyFormat.cs" />
     <Compile Include="EmailSender.cs" />
     <Compile Include="AbsoluteUrlBuilder.cs" />
-    <Compile Include="EmailSenderSynchronization.cs" />
     <Compile Include="HtmlEncoderOptions.cs" />
     <Compile Include="IEmailSender.cs" />
     <Compile Include="IEmailSenderConfiguration.cs" />
@@ -69,9 +77,8 @@
     <Compile Include="ReCaptchaValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Junior.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=998713eb9a0cce30, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JuniorCommon.2.0.1\lib\net40\Junior.Common.dll</HintPath>
+    <Reference Include="Junior.Common">
+      <HintPath>..\packages\JuniorCommon.3.0.0\lib\net40\Junior.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -82,6 +89,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

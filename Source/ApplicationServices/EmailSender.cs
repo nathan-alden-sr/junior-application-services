@@ -1,23 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Mail;
+using System.Threading.Tasks;
 
 using Junior.Common;
 
 namespace Junior.ApplicationServices
 {
-	/// <summary>
-	/// Sends an email message.
-	/// </summary>
 	public class EmailSender : IEmailSender
 	{
 		private readonly IEmailSenderConfiguration _configuration;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="EmailSender"/> class.
-		/// </summary>
-		/// <param name="configuration">Configuration necessary to send email messages.</param>
-		/// <exception cref="ArgumentNullException">Thrown when <paramref name="configuration"/> is null.</exception>
 		public EmailSender(IEmailSenderConfiguration configuration)
 		{
 			configuration.ThrowIfNull("configuration");
@@ -25,17 +18,7 @@ namespace Junior.ApplicationServices
 			_configuration = configuration;
 		}
 
-		/// <summary>
-		/// Sends an email message.
-		/// </summary>
-		/// <param name="subject">The email's subject.</param>
-		/// <param name="body">The email's body.</param>
-		/// <param name="bodyFormat">The format of the email's body.</param>
-		/// <param name="synchronization">Determines whether email messages are sent synchronously or asynchronously.</param>
-		/// <param name="toAddresses">Email addresses to which the email will be sent.</param>
-		/// <exception cref="ArgumentNullException">Thrown when <paramref name="toAddresses"/> is null.</exception>
-		/// <exception cref="ArgumentException">Thrown when <paramref name="toAddresses"/> is empty.</exception>
-		public void Send(string subject, string body, EmailBodyFormat bodyFormat, EmailSenderSynchronization synchronization, params EmailAddress[] toAddresses)
+		public async Task Send(string subject, string body, EmailBodyFormat bodyFormat, params string[] toAddresses)
 		{
 			toAddresses.ThrowIfNull("toAddresses");
 			if (!toAddresses.Any())
@@ -54,7 +37,7 @@ namespace Junior.ApplicationServices
 					From = new MailAddress(_configuration.FromAddress, _configuration.FromAddressDisplayName)
 				};
 
-			foreach (MailAddress toMailAddress in toAddresses.Select(address => new MailAddress(address.ToString())))
+			foreach (MailAddress toMailAddress in toAddresses.Select(address => new MailAddress(address)))
 			{
 				message.To.Add(toMailAddress);
 			}
@@ -63,17 +46,7 @@ namespace Junior.ApplicationServices
 			message.Body = body ?? "";
 			message.IsBodyHtml = bodyFormat == EmailBodyFormat.Html;
 
-			switch (synchronization)
-			{
-				case EmailSenderSynchronization.Synchronous:
-					client.Send(message);
-					break;
-				case EmailSenderSynchronization.Asynchronous:
-					client.SendAsync(message, null);
-					break;
-				default:
-					throw new ArgumentOutOfRangeException("synchronization");
-			}
+			await client.SendMailAsync(message);
 		}
 	}
 }
