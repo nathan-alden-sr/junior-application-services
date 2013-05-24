@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Net;
 
-using Junior.Common;
-
 namespace Junior.ApplicationServices
 {
 	public interface IEmailSenderConfiguration
@@ -11,7 +9,7 @@ namespace Junior.ApplicationServices
 		{
 			get;
 		}
-		int SmtpPort
+		ushort SmtpPort
 		{
 			get;
 		}
@@ -27,7 +25,7 @@ namespace Junior.ApplicationServices
 		{
 			get;
 		}
-		EmailAddress FromAddress
+		string FromAddress
 		{
 			get;
 		}
