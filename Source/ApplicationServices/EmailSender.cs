@@ -28,7 +28,7 @@ namespace Junior.ApplicationServices
 
 			var client = new SmtpClient(_configuration.SmtpHost, _configuration.SmtpPort)
 				{
-					Timeout = _configuration.Timeout.Milliseconds,
+					Timeout = (int)_configuration.Timeout.TotalMilliseconds,
 					EnableSsl = _configuration.UseSsl,
 					Credentials = _configuration.Credentials
 				};
