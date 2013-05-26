@@ -9,15 +9,12 @@ namespace Junior.ApplicationServices
 	public class ReCaptchaValidator : IReCaptchaValidator
 	{
 		private readonly IReCaptchaValidatorConfiguration _configuration;
-		private readonly IUrlEncoder _urlEncoder;
 
-		public ReCaptchaValidator(IReCaptchaValidatorConfiguration configuration, IUrlEncoder urlEncoder)
+		public ReCaptchaValidator(IReCaptchaValidatorConfiguration configuration)
 		{
 			configuration.ThrowIfNull("configuration");
-			urlEncoder.ThrowIfNull("urlEncoder");
 
 			_configuration = configuration;
-			_urlEncoder = urlEncoder;
 		}
 
 		public bool ValidateResponse(IPAddress ipAddress, string challenge, string response)
@@ -38,10 +35,10 @@ namespace Junior.ApplicationServices
 
 			writer.Write(
 				"privatekey={0}&remoteip={1}&challenge={2}&response={3}",
-				_urlEncoder.Encode(_configuration.PrivateKey),
-				_urlEncoder.Encode(ipAddress.ToString()),
-				_urlEncoder.Encode(challenge),
-				_urlEncoder.Encode(response));
+				WebUtility.UrlEncode(_configuration.PrivateKey),
+				WebUtility.UrlEncode(ipAddress.ToString()),
+				WebUtility.UrlEncode(challenge),
+				WebUtility.UrlEncode(response));
 			writer.Close();
 
 			WebResponse webResponse = webRequest.GetResponse();
