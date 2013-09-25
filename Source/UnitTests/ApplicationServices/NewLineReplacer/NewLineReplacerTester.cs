@@ -3,7 +3,7 @@ using System.Text;
 
 using NUnit.Framework;
 
-namespace Junior.ApplicationServices.UnitTests.ApplicationServices
+namespace Junior.ApplicationServices.UnitTests.ApplicationServices.NewLineReplacer
 {
 	public static class NewLineReplacerTester
 	{
@@ -13,7 +13,7 @@ namespace Junior.ApplicationServices.UnitTests.ApplicationServices
 			[Test]
 			public void Must_replace_environment_newlines_carriage_returns_and_line_feeds()
 			{
-				var systemUnderTest = new NewLineReplacer();
+				var systemUnderTest = new Junior.ApplicationServices.NewLineReplacer.NewLineReplacer();
 				string value = String.Format("Test\rTest\nTest{0}Test", Environment.NewLine);
 				string actual = systemUnderTest.ReplaceWithBrTags(value);
 
@@ -27,7 +27,7 @@ namespace Junior.ApplicationServices.UnitTests.ApplicationServices
 			[Test]
 			public void Must_replace_environment_newlines_carriage_returns_and_line_feeds()
 			{
-				var systemUnderTest = new NewLineReplacer();
+				var systemUnderTest = new Junior.ApplicationServices.NewLineReplacer.NewLineReplacer();
 				var value = new StringBuilder(String.Format("Test\rTest\nTest{0}Test", Environment.NewLine));
 				StringBuilder actual = systemUnderTest.ReplaceWithBrTags(value);
 

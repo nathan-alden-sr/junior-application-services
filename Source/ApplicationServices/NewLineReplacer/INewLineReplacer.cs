@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Junior.ApplicationServices
+namespace Junior.ApplicationServices.NewLineReplacer
 {
 	public interface INewLineReplacer
 	{

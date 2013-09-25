@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Junior.ApplicationServices
+namespace Junior.ApplicationServices.EmailSender
 {
 	public interface IEmailSenderConfiguration
 	{

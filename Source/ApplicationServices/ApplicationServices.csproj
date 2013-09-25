@@ -59,20 +59,22 @@
     <AssemblyOriginatorKeyFile>..\JuniorApplicationServices.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="EmailBodyFormat.cs" />
-    <Compile Include="EmailSender.cs" />
-    <Compile Include="AbsoluteUrlBuilder.cs" />
-    <Compile Include="EmailSenderConfigurationSection.cs" />
-    <Compile Include="IEmailSender.cs" />
-    <Compile Include="IEmailSenderConfiguration.cs" />
-    <Compile Include="IAbsoluteUrlBuilder.cs" />
-    <Compile Include="IAbsoluteUrlBuilderConfiguration.cs" />
-    <Compile Include="INewLineReplacer.cs" />
-    <Compile Include="IReCaptchaValidatorConfiguration.cs" />
-    <Compile Include="IReCaptchaValidator.cs" />
-    <Compile Include="NewLineReplacer.cs" />
+    <Compile Include="EmailSender\EmailBodyFormat.cs" />
+    <Compile Include="EmailSender\EmailRecipient.cs" />
+    <Compile Include="EmailSender\EmailRecipientType.cs" />
+    <Compile Include="EmailSender\EmailSender.cs" />
+    <Compile Include="AbsoluteUrlBuilder\AbsoluteUrlBuilder.cs" />
+    <Compile Include="EmailSender\EmailSenderConfigurationSection.cs" />
+    <Compile Include="EmailSender\IEmailSender.cs" />
+    <Compile Include="EmailSender\IEmailSenderConfiguration.cs" />
+    <Compile Include="AbsoluteUrlBuilder\IAbsoluteUrlBuilder.cs" />
+    <Compile Include="AbsoluteUrlBuilder\IAbsoluteUrlBuilderConfiguration.cs" />
+    <Compile Include="NewLineReplacer\INewLineReplacer.cs" />
+    <Compile Include="ReCaptchaValidator\IReCaptchaValidatorConfiguration.cs" />
+    <Compile Include="ReCaptchaValidator\IReCaptchaValidator.cs" />
+    <Compile Include="NewLineReplacer\NewLineReplacer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReCaptchaValidator.cs" />
+    <Compile Include="ReCaptchaValidator\ReCaptchaValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Junior.Common">

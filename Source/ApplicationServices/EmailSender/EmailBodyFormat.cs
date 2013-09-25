@@ -1,4 +1,4 @@
-﻿namespace Junior.ApplicationServices
+﻿namespace Junior.ApplicationServices.EmailSender
 {
 	public enum EmailBodyFormat
 	{

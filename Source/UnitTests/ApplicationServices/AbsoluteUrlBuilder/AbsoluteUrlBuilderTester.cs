@@ -1,10 +1,12 @@
 ﻿using System;
 
+using Junior.ApplicationServices.AbsoluteUrlBuilder;
+
 using NUnit.Framework;
 
 using Rhino.Mocks;
 
-namespace Junior.ApplicationServices.UnitTests.ApplicationServices
+namespace Junior.ApplicationServices.UnitTests.ApplicationServices.AbsoluteUrlBuilder
 {
 	public static class AbsoluteUrlBuilderTester
 	{
@@ -18,7 +20,7 @@ namespace Junior.ApplicationServices.UnitTests.ApplicationServices
 
 				configuration.Stub(arg => arg.RootUrl).Return(new Uri("http://localhost"));
 
-				var systemUnderTest = new AbsoluteUrlBuilder(configuration);
+				var systemUnderTest = new Junior.ApplicationServices.AbsoluteUrlBuilder.AbsoluteUrlBuilder(configuration);
 
 				Uri absoluteUrl = systemUnderTest.Build("relative/url?key=value");
 

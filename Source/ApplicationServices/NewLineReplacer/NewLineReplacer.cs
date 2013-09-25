@@ -2,7 +2,7 @@
 
 using Junior.Common;
 
-namespace Junior.ApplicationServices
+namespace Junior.ApplicationServices.NewLineReplacer
 {
 	public class NewLineReplacer : INewLineReplacer
 	{

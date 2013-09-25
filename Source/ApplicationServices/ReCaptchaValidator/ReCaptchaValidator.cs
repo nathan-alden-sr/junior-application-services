@@ -4,7 +4,7 @@ using System.Net;
 
 using Junior.Common;
 
-namespace Junior.ApplicationServices
+namespace Junior.ApplicationServices.ReCaptchaValidator
 {
 	public class ReCaptchaValidator : IReCaptchaValidator
 	{

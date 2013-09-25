@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace Junior.ApplicationServices
+namespace Junior.ApplicationServices.EmailSender
 {
 	public class EmailSenderConfigurationSection : ConfigurationSection
 	{

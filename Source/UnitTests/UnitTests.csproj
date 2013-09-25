@@ -50,8 +50,8 @@
     <AssemblyOriginatorKeyFile>..\JuniorApplicationServices.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ApplicationServices\AbsoluteUrlBuilderTester.cs" />
-    <Compile Include="ApplicationServices\NewLineReplacerTester.cs" />
+    <Compile Include="ApplicationServices\AbsoluteUrlBuilder\AbsoluteUrlBuilderTester.cs" />
+    <Compile Include="ApplicationServices\NewLineReplacer\NewLineReplacerTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

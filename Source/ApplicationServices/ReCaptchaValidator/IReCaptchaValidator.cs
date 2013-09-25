@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace Junior.ApplicationServices
+namespace Junior.ApplicationServices.ReCaptchaValidator
 {
 	public interface IReCaptchaValidator
 	{
