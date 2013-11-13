@@ -8,7 +8,6 @@
 		<description>JuniorApplicationServices is a library of common application services.</description>
 		<releaseNotes></releaseNotes>
 		<projectUrl>https://github.com/NathanAlden/JuniorApplicationServices</projectUrl>
-		<iconUrl>https://docs.google.com/uc?export=download&amp;id=0B8a4O6RATfaXQ2YxekpxbXRfUjQ</iconUrl>
 		<dependencies>
 			<dependency id="JuniorCommon" version="3.8.0"/>
 		</dependencies>

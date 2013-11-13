@@ -63,18 +63,16 @@
     <Compile Include="EmailSender\EmailRecipient.cs" />
     <Compile Include="EmailSender\EmailRecipientType.cs" />
     <Compile Include="EmailSender\EmailSender.cs" />
-    <Compile Include="AbsoluteUrlBuilder\AbsoluteUrlBuilder.cs" />
     <Compile Include="EmailSender\EmailSenderConfigurationSection.cs" />
     <Compile Include="EmailSender\IEmailSender.cs" />
     <Compile Include="EmailSender\IEmailSenderConfiguration.cs" />
-    <Compile Include="AbsoluteUrlBuilder\IAbsoluteUrlBuilder.cs" />
-    <Compile Include="AbsoluteUrlBuilder\IAbsoluteUrlBuilderConfiguration.cs" />
-    <Compile Include="NewLineReplacer\INewLineReplacer.cs" />
+    <Compile Include="HttpClientSingleton.cs" />
     <Compile Include="ReCaptchaValidator\IReCaptchaValidatorConfiguration.cs" />
     <Compile Include="ReCaptchaValidator\IReCaptchaValidator.cs" />
-    <Compile Include="NewLineReplacer\NewLineReplacer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReCaptchaValidator\ReCaptchaValidatorConfigurationSection.cs" />
     <Compile Include="ReCaptchaValidator\ReCaptchaValidator.cs" />
+    <Compile Include="ReCaptchaValidator\ValidateResponseResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Junior.Common">
@@ -82,6 +80,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\JuniorApplicationServices.snk">

@@ -8,19 +8,18 @@ namespace Junior.ApplicationServices.ReCaptchaValidator
 		{
 			get;
 		}
+
 		string PublicKey
 		{
 			get;
 		}
+
 		string PrivateKey
 		{
 			get;
 		}
+
 		string UserAgent
-		{
-			get;
-		}
-		TimeSpan Timeout
 		{
 			get;
 		}

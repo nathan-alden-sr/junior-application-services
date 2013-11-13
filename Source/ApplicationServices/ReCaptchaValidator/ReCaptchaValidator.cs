@@ -1,6 +1,8 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 using Junior.Common;
 
@@ -17,37 +19,28 @@ namespace Junior.ApplicationServices.ReCaptchaValidator
 			_configuration = configuration;
 		}
 
-		public bool ValidateResponse(IPAddress ipAddress, string challenge, string response)
+		public async Task<ValidateResponseResult> ValidateResponse(IPAddress ipAddress, string challenge, string response)
 		{
 			ipAddress.ThrowIfNull("ipAddress");
 			challenge.ThrowIfNull("challenge");
 			response.ThrowIfNull("response");
 
-			var webRequest = (HttpWebRequest)WebRequest.Create(_configuration.Url);
+			var content = new FormUrlEncodedContent(
+				new[]
+				{
+					new KeyValuePair<string, string>("privatekey", _configuration.PrivateKey),
+					new KeyValuePair<string, string>("remoteip", ipAddress.ToString()),
+					new KeyValuePair<string, string>("challenge", challenge),
+					new KeyValuePair<string, string>("response", response)
+				});
 
-			webRequest.ContentType = "application/x-www-form-urlencoded";
-			webRequest.ProtocolVersion = HttpVersion.Version10;
-			webRequest.Timeout = (int)_configuration.Timeout.TotalMilliseconds;
-			webRequest.Method = "POST";
-			webRequest.UserAgent = _configuration.UserAgent;
+			content.Headers.Add("User-Agent", _configuration.UserAgent);
 
-			var writer = new StreamWriter(webRequest.GetRequestStream());
+			HttpResponseMessage responseMessage = await HttpClientSingleton.Instance.PostAsync(_configuration.Url, content);
+			string responseContent = await responseMessage.Content.ReadAsStringAsync();
+			string[] lines = responseContent.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-			writer.Write(
-				"privatekey={0}&remoteip={1}&challenge={2}&response={3}",
-				WebUtility.UrlEncode(_configuration.PrivateKey),
-				WebUtility.UrlEncode(ipAddress.ToString()),
-				WebUtility.UrlEncode(challenge),
-				WebUtility.UrlEncode(response));
-			writer.Close();
-
-			WebResponse webResponse = webRequest.GetResponse();
-			var reader = new StreamReader(webResponse.GetResponseStream());
-			string[] results = reader.ReadToEnd().Split(new[] { "\n", "\\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-			reader.Close();
-
-			return Boolean.Parse(results[0]);
+			return lines.Length > 0 && lines[0] == "true" ? ValidateResponseResult.Valid : ValidateResponseResult.Invalid;
 		}
 	}
 }

@@ -9,26 +9,32 @@ namespace Junior.ApplicationServices.EmailSender
 		{
 			get;
 		}
+
 		ushort SmtpPort
 		{
 			get;
 		}
+
 		TimeSpan Timeout
 		{
 			get;
 		}
+
 		bool UseSsl
 		{
 			get;
 		}
+
 		NetworkCredential Credentials
 		{
 			get;
 		}
+
 		string FromAddress
 		{
 			get;
 		}
+
 		string FromAddressDisplayName
 		{
 			get;
