@@ -25,18 +25,27 @@ namespace Junior.ApplicationServices.ReCaptchaValidator
 			challenge.ThrowIfNull("challenge");
 			response.ThrowIfNull("response");
 
-			var content = new FormUrlEncodedContent(
-				new[]
+			if (!_configuration.Enabled)
+			{
+				return ValidateResponseResult.ServiceDisabled;
+			}
+
+			var requestMessage =
+				new HttpRequestMessage(HttpMethod.Post, _configuration.Url)
 				{
-					new KeyValuePair<string, string>("privatekey", _configuration.PrivateKey),
-					new KeyValuePair<string, string>("remoteip", ipAddress.ToString()),
-					new KeyValuePair<string, string>("challenge", challenge),
-					new KeyValuePair<string, string>("response", response)
-				});
+					Content = new FormUrlEncodedContent(
+						new[]
+						{
+							new KeyValuePair<string, string>("privatekey", _configuration.PrivateKey),
+							new KeyValuePair<string, string>("remoteip", ipAddress.ToString()),
+							new KeyValuePair<string, string>("challenge", challenge),
+							new KeyValuePair<string, string>("response", response)
+						})
+				};
 
-			content.Headers.Add("User-Agent", _configuration.UserAgent);
+			requestMessage.Headers.Add("User-Agent", _configuration.UserAgent);
 
-			HttpResponseMessage responseMessage = await HttpClientSingleton.Instance.PostAsync(_configuration.Url, content);
+			HttpResponseMessage responseMessage = await HttpClientSingleton.Instance.SendAsync(requestMessage);
 			string responseContent = await responseMessage.Content.ReadAsStringAsync();
 			string[] lines = responseContent.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 

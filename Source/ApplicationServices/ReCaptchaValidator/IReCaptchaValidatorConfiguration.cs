@@ -23,5 +23,10 @@ namespace Junior.ApplicationServices.ReCaptchaValidator
 		{
 			get;
 		}
+
+		bool Enabled
+		{
+			get;
+		}
 	}
 }

@@ -40,5 +40,14 @@ namespace Junior.ApplicationServices.ReCaptchaValidator
 				return (string)this["userAgent"];
 			}
 		}
+
+		[ConfigurationProperty("enabled", IsRequired = false, DefaultValue = false)]
+		public bool Enabled
+		{
+			get
+			{
+				return (bool)this["enabled"];
+			}
+		}
 	}
 }

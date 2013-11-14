@@ -3,6 +3,7 @@
 	public enum ValidateResponseResult
 	{
 		Valid,
-		Invalid
+		Invalid,
+		ServiceDisabled
 	}
 }
