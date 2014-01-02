@@ -19,7 +19,7 @@ namespace Junior.ApplicationServices.ReCaptchaValidator
 			_configuration = configuration;
 		}
 
-		public async Task<ValidateResponseResult> ValidateResponse(IPAddress ipAddress, string challenge, string response)
+		public async Task<ValidateResponseResult> ValidateResponseAsync(IPAddress ipAddress, string challenge, string response)
 		{
 			ipAddress.ThrowIfNull("ipAddress");
 			challenge.ThrowIfNull("challenge");

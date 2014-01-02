@@ -19,7 +19,7 @@ namespace Junior.ApplicationServices.EmailSender
 			_configuration = configuration;
 		}
 
-		public Task Send(string subject, string body, EmailBodyFormat bodyFormat, IEnumerable<EmailRecipient> recipients)
+		public Task SendAsync(string subject, string body, EmailBodyFormat bodyFormat, IEnumerable<EmailRecipient> recipients)
 		{
 			recipients.ThrowIfNull("recipients");
 
@@ -66,21 +66,21 @@ namespace Junior.ApplicationServices.EmailSender
 			return client.SendMailAsync(message);
 		}
 
-		public Task Send(string subject, string body, EmailBodyFormat bodyFormat, params EmailRecipient[] recipients)
+		public Task SendAsync(string subject, string body, EmailBodyFormat bodyFormat, params EmailRecipient[] recipients)
 		{
-			return Send(subject, body, bodyFormat, (IEnumerable<EmailRecipient>)recipients);
+			return SendAsync(subject, body, bodyFormat, (IEnumerable<EmailRecipient>)recipients);
 		}
 
-		public Task Send(string subject, string body, EmailBodyFormat bodyFormat, IEnumerable<string> toEmailAddresses)
+		public Task SendAsync(string subject, string body, EmailBodyFormat bodyFormat, IEnumerable<string> toEmailAddresses)
 		{
 			toEmailAddresses.ThrowIfNull("toEmailAddresses");
 
-			return Send(subject, body, bodyFormat, toEmailAddresses.Select(arg => new EmailRecipient(arg, EmailRecipientType.To)));
+			return SendAsync(subject, body, bodyFormat, toEmailAddresses.Select(arg => new EmailRecipient(arg, EmailRecipientType.To)));
 		}
 
-		public Task Send(string subject, string body, EmailBodyFormat bodyFormat, params string[] toEmailAddresses)
+		public Task SendAsync(string subject, string body, EmailBodyFormat bodyFormat, params string[] toEmailAddresses)
 		{
-			return Send(subject, body, bodyFormat, (IEnumerable<string>)toEmailAddresses);
+			return SendAsync(subject, body, bodyFormat, (IEnumerable<string>)toEmailAddresses);
 		}
 	}
 }
